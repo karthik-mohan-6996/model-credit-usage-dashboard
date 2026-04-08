@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoho CRM — Gen AI Vendor Configuration</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#fff"/><text x="7" y="19" font-size="14" fill="#1b2a4a" font-weight="700">Z</text></svg>
+      <span class="sidebar-title">Setup</span>
+    </div>
+    <div class="sidebar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8e9bae" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      <input type="text" placeholder="Search" readonly>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#">Client Script</a>
+      <a href="#">Zoho CRM Variables</a>
+      <a href="#">Webforms</a>
+      <a href="#">SDKs</a>
+      <div class="sidebar-section">
+        <div class="sidebar-section-header open">
+          <svg class="chevron" width="10" height="10" viewBox="0 0 10 10"><polyline points="2,3 5,7 8,3" fill="none" stroke="#8e9bae" stroke-width="1.5"/></svg>
+          Zia
+        </div>
+        <div class="sidebar-section-items">
+          <a href="#">Data Enrichment</a>
+          <a href="#">Prediction</a>
+          <a href="#">Recommendation</a>
+          <a href="#">Communication</a>
+          <a href="#">Conversational AI</a>
+          <a href="#">Vision</a>
+          <a href="#">Notifications</a>
+          <a class="active" href="#">Gen AI</a>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-header">
+          <svg class="chevron" width="10" height="10" viewBox="0 0 10 10"><polyline points="2,3 5,7 8,3" fill="none" stroke="#8e9bae" stroke-width="1.5"/></svg>
+          Zoho Directory
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-header">
+          <svg class="chevron" width="10" height="10" viewBox="0 0 10 10"><polyline points="2,3 5,7 8,3" fill="none" stroke="#8e9bae" stroke-width="1.5"/></svg>
+          CPQ
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <!-- PRIMARY TABS -->
+    <div class="primary-tabs">
+      <button class="primary-tab" data-tab="prompt-builder">Prompt Builder</button>
+      <button class="primary-tab" data-tab="vendor">Vendor</button>
+      <button class="primary-tab" data-tab="channels">Channels Intelligence</button>
+      <button class="primary-tab active" data-tab="usage">Usage &amp; Credits</button>
+    </div>
+
+    <!-- VENDOR TAB (shown when Vendor is active) -->
+    <div class="tab-content" id="tab-vendor" style="display:none">
+      <div class="page-header">
+        <h1>Vendor Configuration</h1>
+        <p>Configure AI models for your workspace</p>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-card-header">
+          <div class="vendor-info">
+            <div class="vendor-icon zks-icon">Z</div>
+            <div>
+              <h3>ZKS</h3>
+              <p>Access models using Zoho managed credits with no external API key setup.</p>
+            </div>
+          </div>
+          <label class="toggle on"><span class="toggle-slider"></span></label>
+        </div>
+        <div class="vendor-sub-card">
+          <div class="vendor-info">
+            <div class="vendor-icon zia-icon">Zia</div>
+            <div>
+              <h4>Zia <span class="badge">Credit Free Model</span></h4>
+              <p>Our natively hosted model processes data securely.</p>
+            </div>
+          </div>
+          <label class="toggle on"><span class="toggle-slider"></span></label>
+        </div>
+        <div class="vendor-sub-card">
+          <div class="vendor-info">
+            <div class="vendor-icon openai-icon">⚙</div>
+            <div>
+              <h4>Open AI</h4>
+              <p>Leading provider offers powerful cloud-based AI models.</p>
+            </div>
+          </div>
+          <label class="toggle"><span class="toggle-slider"></span></label>
+        </div>
+        <div class="credit-balance-box">
+          <div class="credit-balance-header">
+            <span>Credit Balance <span class="info-icon">ⓘ</span></span>
+            <span>5250 remaining of/10000</span>
+          </div>
+          <div class="progress-bar-track"><div class="progress-bar-fill" style="width:52.5%"></div></div>
+          <div class="credit-balance-footer">
+            <span>52.5%</span>
+            <button class="btn-outline">Add Credit</button>
+          </div>
+        </div>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-card-header">
+          <div class="vendor-info">
+            <div class="vendor-icon byok-icon">🔑</div>
+            <div>
+              <h3>BYOK</h3>
+              <p>Bring your own API keys to access AI models directly.</p>
+            </div>
+          </div>
+          <label class="toggle"><span class="toggle-slider"></span></label>
+        </div>
+        <div class="byok-vendors">
+          <div class="byok-vendor-card"><div class="vendor-icon openai-icon">⚙</div><h4>Open AI</h4><p>Leading provider offers powerful cloud-based AI models.</p><label class="toggle"><span class="toggle-slider"></span></label></div>
+          <div class="byok-vendor-card"><div class="vendor-icon google-icon">G</div><h4>Google</h4><p>Delivers enterprise-grade AI models for CRM automation.</p><label class="toggle"><span class="toggle-slider"></span></label></div>
+          <div class="byok-vendor-card"><div class="vendor-icon anthropic-icon">A</div><h4>Anthropic</h4><p>Focuses on secure responsible AI with Claude.</p><label class="toggle"><span class="toggle-slider"></span></label></div>
+          <div class="byok-vendor-card"><div class="vendor-icon cohere-icon">C</div><h4>Cohere</h4><p>Specializes in NLP-driven AI for CRM insights.</p><label class="toggle"><span class="toggle-slider"></span></label></div>
+        </div>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-card-header">
+          <div class="vendor-info">
+            <div class="vendor-icon byok-icon">🔑</div>
+            <div>
+              <h3>LLM Models</h3>
+              <p>Access and manage your organization's configured models</p>
+            </div>
+          </div>
+          <button class="btn-outline">Manage Model</button>
+        </div>
+        <div class="llm-models-list">
+          <div class="llm-vendor-header"><span class="vendor-icon openai-icon sm">⚙</span> Open AI</div>
+          <div class="llm-model-row"><span class="model-name">GPT-4o</span><span class="model-desc">Strong at generating detailed CRM summaries and call notes.</span></div>
+          <div class="llm-model-row"><span class="model-name">GPT-4o mini</span><span class="model-desc">Fast choice for quick CRM replies and updates.</span></div>
+          <div class="llm-model-row"><span class="model-name">GPT-4 Turbo</span><span class="model-desc">Balanced option for CRM emails and templates.</span></div>
+          <div class="llm-model-row"><span class="model-name">GPT-5</span><span class="model-desc">Reliable for drafting high-volume CRM emails.</span></div>
+          <div class="llm-model-row"><span class="model-name">GPT-3.5</span><span class="model-desc">Lightweight model for short CRM notes and updates.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT BUILDER TAB -->
+    <div class="tab-content" id="tab-prompt-builder" style="display:none">
+      <div class="page-header"><h1>Prompt Builder</h1><p>Create and manage AI prompts for your CRM workflows.</p></div>
+      <div class="empty-state">Select or create a prompt to get started.</div>
+    </div>
+
+    <!-- CHANNELS TAB -->
+    <div class="tab-content" id="tab-channels" style="display:none">
+      <div class="page-header"><h1>Channels Intelligence</h1><p>Configure AI intelligence across your communication channels.</p></div>
+      <div class="empty-state">Configure channel-level AI settings here.</div>
+    </div>
+
+    <!-- USAGE & CREDITS TAB -->
+    <div class="tab-content" id="tab-usage">
+      <!-- SUB TABS -->
+      <div class="sub-tabs">
+        <button class="sub-tab active" data-subtab="overview">Overview</button>
+        <button class="sub-tab" data-subtab="feature-usage">Feature Usage</button>
+        <button class="sub-tab" data-subtab="vendor-insights">Vendor &amp; Model Insights</button>
+        <button class="sub-tab" data-subtab="recommendations">Recommendations</button>
+        <button class="sub-tab" data-subtab="limits">Limits &amp; Controls</button>
+      </div>
+
+      <!-- GLOBAL FILTERS -->
+      <div class="global-filters">
+        <div class="filter-group">
+          <select id="filterDateRange">
+            <option value="7">Last 7 days</option>
+            <option value="30" selected>Last 30 days</option>
+            <option value="90">Last 90 days</option>
+          </select>
+          <select id="filterVendor">
+            <option value="">All Vendors</option>
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+            <option value="google">Google</option>
+            <option value="cohere">Cohere</option>
+            <option value="zia">Zia Native</option>
+          </select>
+          <select id="filterModel">
+            <option value="">All Models</option>
+            <option value="gpt-4o">GPT-4o</option>
+            <option value="gpt-4o-mini">GPT-4o mini</option>
+            <option value="gpt-4-turbo">GPT-4 Turbo</option>
+            <option value="gpt-5">GPT-5</option>
+            <option value="gpt-3.5">GPT-3.5</option>
+            <option value="claude-sonnet">Claude Sonnet</option>
+            <option value="claude-haiku">Claude Haiku</option>
+            <option value="gemini-flash">Gemini Flash</option>
+          </select>
+          <select id="filterFeature">
+            <option value="">All Features</option>
+            <option value="ask-zia">Ask Zia</option>
+            <option value="smart-prompt">Smart Prompt</option>
+            <option value="data-enrichment">Data Enrichment</option>
+            <option value="image-validation">Image Validation</option>
+            <option value="ocr">OCR</option>
+            <option value="email-drafting">Email Drafting</option>
+            <option value="call-summaries">Call Summaries</option>
+            <option value="prediction">Prediction</option>
+          </select>
+          <select id="filterUsageType">
+            <option value="">ZKS &amp; BYOK</option>
+            <option value="zks">ZKS Only</option>
+            <option value="byok">BYOK Only</option>
+          </select>
+          <select id="filterCost">
+            <option value="">All Usage</option>
+            <option value="high">High Cost Only</option>
+          </select>
+        </div>
+        <div class="search-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8e9bae" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+          <input type="text" id="globalSearch" placeholder="Search models, features, vendors...">
+        </div>
+      </div>
+
+      <!-- ALERTS BANNER -->
+      <div class="alerts-banner" id="alertsBanner">
+        <div class="alert-item warning">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>80% of ZKS credits consumed. Consider adding credits or optimizing usage.</span>
+          <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">✕</button>
+        </div>
+        <div class="alert-item info">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Ask Zia usage spiked 42% in the last 14 days.</span>
+          <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">✕</button>
+        </div>
+      </div>
+
+      <!-- OVERVIEW SUB TAB -->
+      <div class="subtab-content" id="subtab-overview">
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="card-icon blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Total Credits Purchased</span>
+              <span class="card-value">100,000</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon orange">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Credits Consumed</span>
+              <span class="card-value">52,500</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Credits Remaining</span>
+              <span class="card-value">47,500</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon purple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Estimated Days Left</span>
+              <span class="card-value">28 days</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon red">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Highest Usage Feature</span>
+              <span class="card-value">Ask Zia</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon darkblue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Highest Cost Model</span>
+              <span class="card-value">GPT-5</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon teal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Total Input Tokens</span>
+              <span class="card-value">8.4M</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon pink">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 17 14 11 20 5"/><line x1="4" y1="19" x2="12" y2="19"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Total Output Tokens</span>
+              <span class="card-value">2.1M</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credit Balance Visualization -->
+        <div class="section-card">
+          <h2>Credit Balance</h2>
+          <div class="credit-viz">
+            <div class="credit-bar-container">
+              <div class="credit-labels">
+                <span>Consumed: <strong>52,500</strong></span>
+                <span>Remaining: <strong>47,500</strong></span>
+              </div>
+              <div class="credit-progress">
+                <div class="credit-progress-fill" style="width:52.5%">
+                  <span class="credit-pct">52.5%</span>
+                </div>
+                <div class="forecast-marker" style="left:78%" title="Forecast depletion: May 6, 2026">
+                  <div class="forecast-line"></div>
+                  <div class="forecast-label">Forecast: May 6</div>
+                </div>
+              </div>
+              <div class="credit-sub-labels">
+                <span>0</span>
+                <span>25,000</span>
+                <span>50,000</span>
+                <span>75,000</span>
+                <span>100,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trend Chart -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2>Usage Trend</h2>
+            <div class="chart-period-btns">
+              <button class="period-btn" data-period="7">7D</button>
+              <button class="period-btn active" data-period="30">30D</button>
+              <button class="period-btn" data-period="90">90D</button>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="trendChart"></canvas>
+          </div>
+          <div class="chart-legend-custom">
+            <span class="legend-item"><span class="legend-dot" style="background:#4f6ef7"></span>Daily Credits (ZKS)</span>
+            <span class="legend-item"><span class="legend-dot" style="background:#a78bfa"></span>Daily Credits (BYOK)</span>
+            <span class="legend-item"><span class="legend-dot" style="background:#34d399"></span>Input Tokens (K)</span>
+            <span class="legend-item"><span class="legend-dot" style="background:#f97316"></span>Output Tokens (K)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURE USAGE SUB TAB -->
+      <div class="subtab-content" id="subtab-feature-usage" style="display:none">
+        <div class="section-card">
+          <div class="section-header">
+            <h2>Feature Usage Breakdown</h2>
+            <button class="btn-outline" id="exportCsvBtn">Export CSV</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="featureTable">
+              <thead>
+                <tr>
+                  <th>CRM Feature</th>
+                  <th>Vendor</th>
+                  <th>Model</th>
+                  <th>Version</th>
+                  <th>Input Tokens</th>
+                  <th>Output Tokens</th>
+                  <th>Total Tokens</th>
+                  <th>Credits Used</th>
+                  <th>Avg Credits/Req</th>
+                  <th>Last Used</th>
+                  <th>Suggested Model</th>
+                  <th>Trend</th>
+                </tr>
+              </thead>
+              <tbody id="featureTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENDOR & MODEL INSIGHTS SUB TAB -->
+      <div class="subtab-content" id="subtab-vendor-insights" style="display:none">
+        <div class="vendor-insights-grid" id="vendorInsightsGrid"></div>
+        <div class="section-card" style="margin-top:20px">
+          <h2>Model Cost Comparison</h2>
+          <div class="chart-container">
+            <canvas id="modelCostChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS SUB TAB -->
+      <div class="subtab-content" id="subtab-recommendations" style="display:none">
+        <div class="recommendations-grid" id="recommendationsGrid"></div>
+      </div>
+
+      <!-- LIMITS & CONTROLS SUB TAB -->
+      <div class="subtab-content" id="subtab-limits" style="display:none">
+        <div class="section-card">
+          <div class="section-header">
+            <h2>Active Limits &amp; Rules</h2>
+            <button class="btn-primary" id="addRuleBtn">+ Add Rule</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="limitsTable">
+              <thead>
+                <tr>
+                  <th>Rule Name</th>
+                  <th>Type</th>
+                  <th>Target</th>
+                  <th>Limit</th>
+                  <th>Current Usage</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="limitsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="section-card" style="margin-top:20px">
+          <div class="section-header">
+            <h2>Alert Configuration</h2>
+          </div>
+          <div class="alert-config-grid" id="alertConfigGrid"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SIDE PANEL (drill-down) -->
+  <div class="side-panel-overlay" id="sidePanelOverlay"></div>
+  <div class="side-panel" id="sidePanel">
+    <div class="side-panel-header">
+      <h2 id="sidePanelTitle">Feature Details</h2>
+      <button class="side-panel-close" id="sidePanelClose">✕</button>
+    </div>
+    <div class="side-panel-body" id="sidePanelBody"></div>
+  </div>
+
+  <!-- ADD RULE MODAL -->
+  <div class="modal-overlay" id="addRuleModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add New Rule</h2>
+        <button class="modal-close" onclick="document.getElementById('addRuleModal').style.display='none'">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Rule Name</label>
+          <input type="text" id="ruleName" placeholder="e.g. Ask Zia Monthly Cap">
+        </div>
+        <div class="form-group">
+          <label>Rule Type</label>
+          <select id="ruleType">
+            <option value="monthly-credit-feature">Monthly Credit Limit by Feature</option>
+            <option value="monthly-credit-vendor">Monthly Credit Limit by Vendor</option>
+            <option value="daily-token">Daily Token Threshold</option>
+            <option value="max-output-token">Maximum Output Token Limit</option>
+            <option value="model-restriction">Feature-level Model Restriction</option>
+            <option value="team-quota">Team-level Quota</option>
+            <option value="alert-threshold">Alert Threshold (%)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Target (Feature / Vendor / Team)</label>
+          <select id="ruleTarget">
+            <option value="ask-zia">Ask Zia</option>
+            <option value="smart-prompt">Smart Prompt</option>
+            <option value="email-drafting">Email Drafting</option>
+            <option value="image-validation">Image Validation</option>
+            <option value="ocr">OCR</option>
+            <option value="openai">OpenAI (Vendor)</option>
+            <option value="anthropic">Anthropic (Vendor)</option>
+            <option value="all">All</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Limit Value</label>
+          <input type="number" id="ruleLimit" placeholder="e.g. 15000">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="document.getElementById('addRuleModal').style.display='none'">Cancel</button>
+        <button class="btn-primary" id="saveRuleBtn">Save Rule</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
