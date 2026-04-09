@@ -410,6 +410,28 @@
       <div class="subtab-content" id="subtab-limits" style="display:none">
         <div class="section-card">
           <div class="section-header">
+            <h2>Active Limits &amp; Rules</h2>
+            <button class="btn-primary" id="addRuleBtn">+ Add Rule</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="limitsTable">
+              <thead>
+                <tr>
+                  <th>Rule Name</th>
+                  <th>Type</th>
+                  <th>Target</th>
+                  <th>Limit</th>
+                  <th>Current Usage</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="limitsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="section-card" style="margin-top:20px">
+          <div class="section-header">
             <h2>Alert Configuration</h2>
           </div>
           <div class="alert-config-grid" id="alertConfigGrid"></div>
