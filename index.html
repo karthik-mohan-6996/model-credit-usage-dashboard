@@ -444,5 +444,37 @@
   </div>
 
   <script src="app.js"></script>
+
+  <!-- EDIT RULE MODAL -->
+  <div class="modal-overlay" id="editRuleModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Edit Rule</h2>
+        <button class="modal-close" onclick="document.getElementById('editRuleModal').style.display='none'">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Rule Name</label>
+          <input type="text" id="editRuleName">
+        </div>
+        <div class="form-group">
+          <label>Rule Type</label>
+          <input type="text" id="editRuleType" disabled style="background:#f3f4f6;color:#6b7280;cursor:not-allowed">
+        </div>
+        <div class="form-group">
+          <label>Target</label>
+          <input type="text" id="editRuleTarget" disabled style="background:#f3f4f6;color:#6b7280;cursor:not-allowed">
+        </div>
+        <div class="form-group">
+          <label>Limit Value</label>
+          <input type="text" id="editRuleLimit">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="document.getElementById('editRuleModal').style.display='none'">Cancel</button>
+        <button class="btn-primary" id="updateRuleBtn">Update Rule</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

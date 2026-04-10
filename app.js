@@ -358,7 +358,7 @@ function renderLimits() {
       <td>${typeof rule.limit === 'number' ? rule.limit.toLocaleString() : rule.limit}</td>
       <td>${progressHTML}</td>
       <td><span class="status-badge ${rule.status}">${rule.status === 'active' ? 'Active' : rule.status === 'warning' ? 'Near Limit' : 'Breached'}</span></td>
-      <td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Edit</button></td>
+      <td><button class="btn-outline" style="padding:4px 10px;font-size:11px" onclick="openEditRule(${LIMITS_DATA.indexOf(rule)})">Edit</button></td>
     </tr>`;
   }).join('');
 
@@ -400,6 +400,39 @@ document.getElementById('saveRuleBtn').addEventListener('click', () => {
     document.getElementById('addRuleModal').style.display = 'none';
     document.getElementById('ruleName').value = '';
     document.getElementById('ruleLimit').value = '';
+  }
+});
+
+// ============= EDIT RULE MODAL =============
+
+let editingRuleIndex = -1;
+
+function openEditRule(index) {
+  editingRuleIndex = index;
+  const rule = LIMITS_DATA[index];
+  document.getElementById('editRuleName').value = rule.name;
+  document.getElementById('editRuleType').value = rule.type;
+  document.getElementById('editRuleTarget').value = rule.target;
+  document.getElementById('editRuleLimit').value = typeof rule.limit === 'number' ? rule.limit : rule.limit;
+  document.getElementById('editRuleModal').style.display = '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const updateBtn = document.getElementById('updateRuleBtn');
+  if (updateBtn) {
+    updateBtn.addEventListener('click', () => {
+      if (editingRuleIndex >= 0) {
+        const rule = LIMITS_DATA[editingRuleIndex];
+        rule.name = document.getElementById('editRuleName').value || rule.name;
+        const newLimit = document.getElementById('editRuleLimit').value;
+        if (newLimit !== '') {
+          rule.limit = isNaN(Number(newLimit)) ? newLimit : Number(newLimit);
+        }
+        renderLimits();
+        document.getElementById('editRuleModal').style.display = 'none';
+        editingRuleIndex = -1;
+      }
+    });
   }
 });
 
