@@ -466,16 +466,14 @@
           <label>Rule Type</label>
           <select id="ruleType">
             <option value="monthly-credit-feature">Monthly Credit Limit by Feature</option>
-            <option value="monthly-credit-vendor">Monthly Credit Limit by Vendor</option>
-            <option value="daily-token">Daily Token Threshold</option>
-            <option value="max-output-token">Maximum Output Token Limit</option>
+            <option value="monthly-credit-vendor">Monthly Credit Limit by Model Vendor</option>
+            <option value="daily-token">Daily Total Token Threshold</option>
+            <option value="max-output-token">Maximum Output Token Threshold</option>
             <option value="model-restriction">Feature-level Model Restriction</option>
-            <option value="team-quota">Team-level Quota</option>
-            <option value="alert-threshold">Alert Threshold (%)</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Target (Feature / Vendor / Team)</label>
+          <label>Target (Feature / Vendor)</label>
           <select id="ruleTarget">
             <option value="ask-zia">Ask Zia</option>
             <option value="smart-prompt">Smart Prompt</option>

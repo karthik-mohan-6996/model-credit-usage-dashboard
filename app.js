@@ -59,7 +59,7 @@ const LIMITS_DATA = [
   { name: "Credit Depletion Alert", type: "Alert Threshold", target: "All", limit: "20%", current: "47.5% remaining", status: "active" },
   { name: "OpenAI Monthly Budget", type: "Monthly Credit (Vendor)", target: "OpenAI", limit: 40000, current: 37150, status: "warning" },
   { name: "Email Drafting Daily Cap", type: "Daily Token Threshold", target: "Email Drafting", limit: 50000, current: 32000, status: "active" },
-  { name: "Sales Team Quota", type: "Team Quota", target: "Sales Team", limit: 20000, current: 18500, status: "warning" }
+
 ];
 
 const ALERT_CONFIGS = [
