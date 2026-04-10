@@ -209,26 +209,7 @@ renderTrendChart(30);
 // ============= FEATURE TABLE =============
 
 function getFilteredData() {
-  const vendor = document.getElementById('filterVendor').value;
-  const model = document.getElementById('filterModel').value;
-  const feature = document.getElementById('filterFeature').value;
-  const usageType = document.getElementById('filterUsageType').value;
-  const costFilter = document.getElementById('filterCost').value;
-  const search = document.getElementById('globalSearch').value.toLowerCase();
-
-  return FEATURE_DATA.filter(row => {
-    if (vendor && row.vendorKey !== vendor) return false;
-    if (model && row.modelKey !== model) return false;
-    if (feature && row.feature.toLowerCase().replace(/ /g, '-') !== feature) return false;
-    if (usageType && row.usageType !== usageType) return false;
-    if (costFilter === 'high' && row.creditsUsed < 3000) return false;
-    if (search && !(
-      row.feature.toLowerCase().includes(search) ||
-      row.vendor.toLowerCase().includes(search) ||
-      row.model.toLowerCase().includes(search)
-    )) return false;
-    return true;
-  });
+  return FEATURE_DATA;
 }
 
 function renderFeatureTable() {
@@ -253,17 +234,6 @@ function renderFeatureTable() {
     </tr>`;
   }).join('');
 }
-
-// Filter change listeners
-['filterVendor','filterModel','filterFeature','filterUsageType','filterCost'].forEach(id => {
-  document.getElementById(id).addEventListener('change', () => {
-    renderFeatureTable();
-    renderVendorInsights();
-  });
-});
-document.getElementById('globalSearch').addEventListener('input', () => {
-  renderFeatureTable();
-});
 
 renderFeatureTable();
 
