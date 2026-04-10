@@ -501,19 +501,6 @@ function openSidePanel(featureName) {
     </div>
 
     <div class="sp-section">
-      <h3>Top Teams</h3>
-      <div class="sp-bar-chart">
-        ${teams.map(t => `
-          <div class="sp-bar-row">
-            <span class="sp-bar-label">${t.name}</span>
-            <div class="sp-bar-track"><div class="sp-bar-fill" style="width:${Math.round(t.credits / maxTeam * 100)}%;background:#4f6ef7"></div></div>
-            <span class="sp-bar-value">${t.credits.toLocaleString()}</span>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <div class="sp-section">
       <h3>Top Users</h3>
       <div class="sp-bar-chart">
         ${users.map(u => `
