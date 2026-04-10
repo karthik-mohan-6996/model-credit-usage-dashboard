@@ -331,7 +331,6 @@ function renderRecommendations() {
       <div class="rec-body">
         <div class="rec-category ${rec.category}">${rec.label}</div>
         <div class="rec-text">${rec.text}</div>
-        <div class="rec-action"><button>${rec.action}</button></div>
       </div>
     </div>
   `).join('');
