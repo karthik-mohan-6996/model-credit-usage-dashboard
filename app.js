@@ -63,11 +63,11 @@ const LIMITS_DATA = [
 ];
 
 const ALERT_CONFIGS = [
-  { title: "Credit Depletion Warning", desc: "Alert when remaining credits drop below threshold", enabled: true, threshold: 20 },
-  { title: "Usage Spike Detection", desc: "Alert on sudden usage increase (day-over-day)", enabled: true, threshold: 50 },
-  { title: "Feature Limit Breach", desc: "Alert when a feature exceeds its assigned limit", enabled: true, threshold: null },
-  { title: "Vendor API Failure", desc: "Alert on vendor API failure and fallback activation", enabled: true, threshold: null },
-  { title: "Expensive Model Alert", desc: "Alert when model cost exceeds avg by threshold %", enabled: false, threshold: 200 }
+  { title: "Credit Depletion Warning", desc: "Alert when remaining credits drop below threshold", enabled: true, threshold: 20, channels: { email: true, cliq: true, slack: false, inapp: true } },
+  { title: "Usage Spike Detection", desc: "Alert on sudden usage increase (day-over-day)", enabled: true, threshold: 50, channels: { email: true, cliq: true, slack: false, inapp: true } },
+  { title: "Feature Limit Breach", desc: "Alert when a feature exceeds its assigned limit", enabled: true, threshold: null, channels: { email: true, cliq: false, slack: false, inapp: true } },
+  { title: "Vendor API Failure", desc: "Alert on vendor API failure and fallback activation", enabled: true, threshold: null, channels: { email: true, cliq: true, slack: true, inapp: true } },
+  { title: "Expensive Model Alert", desc: "Alert when model cost exceeds avg by threshold %", enabled: false, threshold: 200, channels: { email: false, cliq: false, slack: false, inapp: false } }
 ];
 
 // ============= UTILITY FUNCTIONS =============
@@ -365,10 +365,11 @@ function renderLimits() {
   const alertGrid = document.getElementById('alertConfigGrid');
   alertGrid.innerHTML = ALERT_CONFIGS.map((cfg, idx) => `
     <div class="alert-config-card">
-      <h4>${cfg.title}</h4>
-      <p>${cfg.desc}</p>
-      <div class="toggle-row">
-        <span style="font-size:12px;color:#6b7280">Enabled</span>
+      <div class="alert-card-top">
+        <div class="alert-card-info">
+          <h4>${cfg.title}</h4>
+          <p>${cfg.desc}</p>
+        </div>
         <label class="toggle ${cfg.enabled ? 'on' : ''}" onclick="this.classList.toggle('on')"><span class="toggle-slider"></span></label>
       </div>
       ${cfg.threshold !== null ? `
@@ -378,6 +379,26 @@ function renderLimits() {
           <span>%</span>
         </div>
       ` : ''}
+      <div class="alert-channels">
+        <div class="alert-channels-label">Notify via</div>
+        <div class="alert-channels-row">
+          <label class="channel-chip ${cfg.channels.email ? 'active' : ''}" onclick="this.classList.toggle('active')">
+            <span class="channel-chip-icon">✉</span> Email
+          </label>
+          <label class="channel-chip ${cfg.channels.cliq ? 'active' : ''}" onclick="this.classList.toggle('active')">
+            <span class="channel-chip-icon">C</span> Cliq
+          </label>
+          <label class="channel-chip ${cfg.channels.slack ? 'active' : ''}" onclick="this.classList.toggle('active')">
+            <span class="channel-chip-icon">S</span> Slack
+          </label>
+          <label class="channel-chip ${cfg.channels.inapp ? 'active' : ''}" onclick="this.classList.toggle('active')">
+            <span class="channel-chip-icon">🔔</span> In-App
+          </label>
+        </div>
+      </div>
+      <div class="alert-card-actions">
+        <button class="btn-outline" style="padding:4px 12px;font-size:11px" onclick="openAlertPreview(${idx})">Preview</button>
+      </div>
     </div>
   `).join('');
 }
@@ -590,9 +611,12 @@ document.getElementById('exportCsvBtn').addEventListener('click', () => {
 
 // ============= NOTIFICATION PREVIEW MODAL =============
 
-document.getElementById('previewNotifBtn').addEventListener('click', () => {
+function openAlertPreview(alertIdx) {
+  const cfg = ALERT_CONFIGS[alertIdx];
+  // Update the preview modal title with the alert name
+  document.querySelector('#notifPreviewModal .modal-header h2').textContent = 'Preview — ' + cfg.title;
   document.getElementById('notifPreviewModal').style.display = '';
-});
+}
 
 document.querySelectorAll('.notif-preview-tab').forEach(tab => {
   tab.addEventListener('click', () => {

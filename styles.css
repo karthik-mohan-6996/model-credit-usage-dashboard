@@ -659,36 +659,39 @@ body {
 /* ============= ALERT CONFIG ============= */
 .alert-config-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
 }
 .alert-config-card {
   background: #f9fafb;
   border-radius: 10px;
-  padding: 16px;
+  padding: 18px;
   border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
+.alert-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.alert-card-info { flex: 1; }
 .alert-config-card h4 {
   font-size: 14px;
   font-weight: 600;
   color: #1b2a4a;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .alert-config-card p {
   font-size: 12px;
   color: #6b7280;
-  margin-bottom: 10px;
-}
-.alert-config-card .toggle-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .alert-config-card .threshold-input {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-top: 8px;
 }
 .alert-config-card .threshold-input input {
   width: 60px;
@@ -701,6 +704,56 @@ body {
 .alert-config-card .threshold-input span {
   font-size: 12px;
   color: #6b7280;
+}
+.alert-channels {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 10px;
+}
+.alert-channels-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  margin-bottom: 8px;
+}
+.alert-channels-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.channel-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: all .15s;
+}
+.channel-chip:hover {
+  border-color: #4f6ef7;
+  color: #4f6ef7;
+}
+.channel-chip.active {
+  background: #eef2ff;
+  border-color: #4f6ef7;
+  color: #4f6ef7;
+  font-weight: 600;
+}
+.channel-chip-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+.alert-card-actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* ============= NOTIFICATION CHANNELS ============= */
