@@ -588,6 +588,21 @@ document.getElementById('exportCsvBtn').addEventListener('click', () => {
   URL.revokeObjectURL(url);
 });
 
+// ============= NOTIFICATION PREVIEW MODAL =============
+
+document.getElementById('previewNotifBtn').addEventListener('click', () => {
+  document.getElementById('notifPreviewModal').style.display = '';
+});
+
+document.querySelectorAll('.notif-preview-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.notif-preview-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.notif-preview-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('preview-' + tab.dataset.preview).classList.add('active');
+  });
+});
+
 // ============= INITIAL RENDER =============
 renderRecommendations();
 renderLimits();

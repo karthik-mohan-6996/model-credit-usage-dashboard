@@ -703,6 +703,471 @@ body {
   color: #6b7280;
 }
 
+/* ============= NOTIFICATION CHANNELS ============= */
+.notif-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.notif-channel-card {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+}
+.notif-channel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.notif-channel-header > div:nth-child(2) { flex: 1; }
+.notif-channel-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1b2a4a;
+}
+.notif-channel-header p {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+.notif-channel-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.notif-channel-icon.email { background: #dbeafe; color: #2563eb; }
+.notif-channel-icon.cliq { background: #fef3c7; color: #d97706; }
+.notif-channel-icon.slack { background: #ede9fe; color: #7c3aed; }
+.notif-channel-icon.inapp { background: #d1fae5; color: #059669; }
+.notif-channel-config {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+.notif-channel-config .form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+.notif-channel-config .form-group input,
+.notif-channel-config .form-group select {
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+/* ============= NOTIFICATION PREVIEW MODAL ============= */
+.notif-preview-tabs {
+  display: flex;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 0 20px;
+  background: #f9fafb;
+}
+.notif-preview-tab {
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  position: relative;
+}
+.notif-preview-tab:hover { color: #1b2a4a; }
+.notif-preview-tab.active {
+  color: #4f6ef7;
+  font-weight: 600;
+}
+.notif-preview-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 2px;
+  background: #4f6ef7;
+  border-radius: 2px 2px 0 0;
+}
+.notif-preview-content {
+  display: none;
+  padding: 20px;
+}
+.notif-preview-content.active { display: block; }
+
+/* Email Preview */
+.email-preview {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+.email-header-bar {
+  background: #f3f4f6;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.email-meta div {
+  font-size: 12px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+.email-meta div:last-child { margin-bottom: 0; }
+.email-body-preview {
+  padding: 24px;
+}
+.email-logo-area {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.email-brand {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4f6ef7;
+}
+.email-body-preview p {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.email-body-preview ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+.email-body-preview li {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.8;
+}
+.email-info-box {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px;
+  margin: 14px 0;
+}
+.email-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 12px;
+  color: #374151;
+  border-bottom: 1px solid #f0f0f0;
+}
+.email-info-row:last-child { border-bottom: none; }
+.email-cta-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #4f6ef7;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 14px 0;
+}
+.email-footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+.email-footer p {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Cliq Preview */
+.cliq-preview {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+}
+.cliq-message {
+  display: flex;
+  gap: 10px;
+}
+.cliq-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.cliq-msg-body { flex: 1; }
+.cliq-msg-header {
+  margin-bottom: 6px;
+}
+.cliq-msg-header strong {
+  font-size: 13px;
+  color: #1b2a4a;
+}
+.cliq-time {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-left: 8px;
+}
+.cliq-card {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+.cliq-card-accent {
+  width: 4px;
+  flex-shrink: 0;
+}
+.cliq-card-accent.warning { background: #f59e0b; }
+.cliq-card-accent.error { background: #ef4444; }
+.cliq-card-accent.info { background: #3b82f6; }
+.cliq-card-body {
+  padding: 12px 14px;
+  flex: 1;
+}
+.cliq-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1b2a4a;
+  margin-bottom: 4px;
+}
+.cliq-card-text {
+  font-size: 12px;
+  color: #374151;
+  margin-bottom: 10px;
+}
+.cliq-card-fields {
+  margin-bottom: 10px;
+}
+.cliq-field {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 12px;
+}
+.cliq-field-label {
+  color: #6b7280;
+  font-weight: 500;
+}
+.cliq-field-value {
+  color: #1b2a4a;
+  font-weight: 600;
+}
+.cliq-card-actions {
+  display: flex;
+  gap: 8px;
+}
+.cliq-btn {
+  padding: 5px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 11px;
+  cursor: pointer;
+  color: #374151;
+}
+.cliq-btn.primary {
+  background: #4f6ef7;
+  color: #fff;
+  border-color: #4f6ef7;
+}
+
+/* Slack Preview */
+.slack-preview {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+}
+.slack-message {
+  display: flex;
+  gap: 10px;
+}
+.slack-avatar {
+  width: 36px; height: 36px;
+  border-radius: 4px;
+  background: #4f6ef7;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.slack-msg-body { flex: 1; }
+.slack-msg-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.slack-msg-header strong {
+  font-size: 14px;
+  color: #1b2a4a;
+}
+.slack-badge {
+  font-size: 10px;
+  background: #e5e7eb;
+  color: #6b7280;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.slack-time {
+  font-size: 11px;
+  color: #9ca3af;
+}
+.slack-attachment {
+  display: flex;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.slack-att-border {
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  flex-shrink: 0;
+}
+.slack-att-border.warning { background: #f59e0b; }
+.slack-att-border.error { background: #ef4444; }
+.slack-att-body {
+  padding: 10px 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  flex: 1;
+}
+.slack-att-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1b2a4a;
+  margin-bottom: 4px;
+}
+.slack-att-text {
+  font-size: 12px;
+  color: #374151;
+  margin-bottom: 10px;
+}
+.slack-att-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.slack-att-field-title {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+}
+.slack-att-field-value {
+  font-size: 12px;
+  color: #1b2a4a;
+}
+.slack-att-footer {
+  font-size: 10px;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+.slack-actions {
+  display: flex;
+  gap: 6px;
+}
+.slack-btn {
+  padding: 5px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 11px;
+  cursor: pointer;
+  color: #374151;
+}
+.slack-btn:hover {
+  background: #f3f4f6;
+}
+
+/* In-App Preview */
+.inapp-preview {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  max-width: 380px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
+.inapp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+.inapp-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1b2a4a;
+}
+.inapp-badge {
+  font-size: 11px;
+  background: #4f6ef7;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.inapp-list {
+  max-height: 360px;
+  overflow-y: auto;
+}
+.inapp-item {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background .15s;
+}
+.inapp-item:hover { background: #f9fafb; }
+.inapp-item.unread { background: #f0f4ff; }
+.inapp-item-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.inapp-item-icon.warning { background: #fef3c7; }
+.inapp-item-icon.info { background: #dbeafe; }
+.inapp-item-icon.error { background: #fee2e2; }
+.inapp-item-icon.success { background: #d1fae5; }
+.inapp-item-body { flex: 1; }
+.inapp-item-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1b2a4a;
+  margin-bottom: 2px;
+}
+.inapp-item-text {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+.inapp-item-time {
+  font-size: 10px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
 /* ============= SIDE PANEL ============= */
 .side-panel-overlay {
   position: fixed;
